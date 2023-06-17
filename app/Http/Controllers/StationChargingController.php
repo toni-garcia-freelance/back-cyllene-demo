@@ -25,6 +25,9 @@ class StationChargingController extends Controller
     }
 
     public function getStationsChargingById($id){
-        return StationCharging::find($id);
+        if(empty($id)){
+            return response()->json(['error' => 'id is null'], 400);
+        }
+        return StationCharging::with('comments', 'address', 'prices')->find($id);
     }
 }

@@ -25,4 +25,4 @@ Route::get('address/all-zip', [AddressController::class, 'getAllZipCode']);
 Route::get('address/all-city', [AddressController::class, 'getAllCity']);
 
 Route::get('station-charging', [App\Http\Controllers\StationChargingController::class, 'getStationsCharging']);
-Route::get('station-charging/{id}', [App\Http\Controllers\StationChargingController::class, 'getStationChargingById']);
+Route::get('station-charging/{id}', [App\Http\Controllers\StationChargingController::class, 'getStationsChargingById']);
