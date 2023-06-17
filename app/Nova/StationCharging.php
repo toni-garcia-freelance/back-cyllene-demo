@@ -3,7 +3,10 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -47,6 +50,13 @@ class StationCharging extends Resource
             Boolean::make('Active', 'active')->sortable()->rules('required'),
 
             Number::make('Nombre de borne', 'number_of_charging')->sortable()->rules('required'),
+
+            
+            BelongsTo::make('Address', 'address', Address::class)->sortable()->rules('required'),
+
+            HasMany::make('Comments', 'comments', Comment::class),
+
+            BelongsToMany::make('Prices', 'prices', Price::class)
         ];
     }
 
