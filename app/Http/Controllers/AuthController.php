@@ -19,7 +19,11 @@ class AuthController extends Controller
             $token = $user->createToken('auth_token')->plainTextToken;
             return response()->json([
                 'access_token' => $token,
-                'token_type' => 'Bearer'
+                'token_type' => 'Bearer',
+                'user' => [
+                    'email' => $user->email,
+                    'name' => $user->name
+                ]
             ]);
         } 
         return response()->json([
@@ -31,8 +35,9 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => 'required', 
-            'email' => 'required|email', 
-            'password' => 'required'
+            'email' => 'required|email|unique:users', 
+            'password' => 'required',
+            'confirm_password' => 'required|same:password'
         ]);
         $user = User::create([
             'name' => $request->name, 
@@ -43,7 +48,11 @@ class AuthController extends Controller
         $token = $user->createToken('auth_token')->plainTextToken;
         return response()->json([
             'access_token' => $token,
-            'token_type' => 'Bearer'
+            'token_type' => 'Bearer',
+            'user' => [
+                'email' => $user->email,
+                'name' => $user->name
+            ]
         ]);
     }
 
