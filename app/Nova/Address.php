@@ -3,19 +3,19 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class StationCharging extends Resource
+class Address extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\StationCharging>
+     * @var class-string<\App\Models\Address>
      */
-    public static $model = \App\Models\StationCharging::class;
+    public static $model = \App\Models\Address::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -30,7 +30,7 @@ class StationCharging extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'active'
+        'id', 'street', 'city', 'state', 'zip_code', 'latitude', 'longitude'
     ];
 
     /**
@@ -43,10 +43,12 @@ class StationCharging extends Resource
     {
         return [
             ID::make()->sortable(),
-
-            Boolean::make('Active', 'active')->sortable()->rules('required'),
-
-            Number::make('Nombre de borne', 'number_of_charging')->sortable()->rules('required'),
+            Text::make('Street', 'street')->sortable()->rules('required'),
+            Text::make('City', 'city')->sortable()->rules('required'),
+            Text::make('State', 'state')->sortable()->rules('required'),
+            Text::make('Zip Code', 'zip')->sortable()->rules('required'),
+            Number::make('Latitude', 'latitude'),
+            Number::make('Longitude', 'longitude')
         ];
     }
 

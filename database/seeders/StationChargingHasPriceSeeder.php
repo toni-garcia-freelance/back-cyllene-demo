@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\PriceModel;
+use App\Models\Price;
 use App\Models\StationCharging;
 use App\Models\StationChargingHasPrice;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -17,8 +17,8 @@ class StationChargingHasPriceSeeder extends Seeder
     {
         $stations = StationCharging::all();
         foreach($stations as $station) {
-            $price1 = PriceModel::all()->random();
-            $price2 = PriceModel::all()->random();
+            $price1 = Price::all()->random();
+            $price2 = Price::all()->random();
             StationChargingHasPrice::create([
                 'station_charging_id' => $station->id,
                 'price_id' => $price1->id,

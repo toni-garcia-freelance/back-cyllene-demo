@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(10)->create();
         $this->call([ AddressSeeder::class]);
-        $this->call([ PriceModelSeeder::class]);
+        $this->call([ PriceSeeder::class]);
         $this->call([ StationChargingSeeder::class]);
         $this->call([ CommentSeeder::class]);
         $this->call([ StationChargingHasPriceSeeder::class]);

@@ -3,26 +3,26 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class StationCharging extends Resource
+class Comment extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\StationCharging>
+     * @var class-string<\App\Models\Comment>
      */
-    public static $model = \App\Models\StationCharging::class;
+    public static $model = \App\Models\Comment::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
@@ -30,7 +30,7 @@ class StationCharging extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'active'
+        'id',
     ];
 
     /**
@@ -43,10 +43,11 @@ class StationCharging extends Resource
     {
         return [
             ID::make()->sortable(),
-
-            Boolean::make('Active', 'active')->sortable()->rules('required'),
-
-            Number::make('Nombre de borne', 'number_of_charging')->sortable()->rules('required'),
+            Text::make('Content', 'content')
+                ->sortable()
+                ->rules('required')
+                ->showOnPreview(),
+            Text::make('Title', 'title')->sortable()->rules('required')->showOnPreview(),
         ];
     }
 

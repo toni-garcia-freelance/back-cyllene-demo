@@ -3,19 +3,18 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class StationCharging extends Resource
+class Price extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\StationCharging>
+     * @var class-string<\App\Models\Price>
      */
-    public static $model = \App\Models\StationCharging::class;
+    public static $model = \App\Models\Price::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -30,7 +29,7 @@ class StationCharging extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'active'
+        'id', 'price', 'hour_start', 'hour_end'
     ];
 
     /**
@@ -43,10 +42,9 @@ class StationCharging extends Resource
     {
         return [
             ID::make()->sortable(),
-
-            Boolean::make('Active', 'active')->sortable()->rules('required'),
-
-            Number::make('Nombre de borne', 'number_of_charging')->sortable()->rules('required'),
+            Number::make('Price', 'price')->sortable()->rules('required'),
+            Number::make('Hour start', 'hour_start')->sortable()->rules('required'),
+            Number::make('Hour end', 'hour_end')->sortable()->rules('required'),
         ];
     }
 
