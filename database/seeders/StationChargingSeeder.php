@@ -13,6 +13,10 @@ class StationChargingSeeder extends Seeder
      */
     public function run(): void
     {
-        StationCharging::factory(10)->create();
+        $addresses = \App\Models\Address::all();
+        foreach($addresses as $address) {
+            StationCharging::factory()
+                ->create(['address_id' => $address->id]);
+        }
     }
 }

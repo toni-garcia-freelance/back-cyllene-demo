@@ -20,7 +20,6 @@ class StationChargingFactory extends Factory
         return [
             'active' => fake()->boolean(),
             'number_of_charging' => fake()->numberBetween(1, 10),
-            'address_id' => Address::all()->random()->id,
         ];
     }
 }

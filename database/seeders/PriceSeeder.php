@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\PriceModel;
+use App\Models\Price;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class PriceModelSeeder extends Seeder
+class PriceSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        PriceModel::factory(10)->create();
+        Price::factory(10)->create();
     }
 }
