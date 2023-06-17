@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('price', function (Blueprint $table) {
             $table->id();
             $table->integer('price');
-            $table->date('hour_start');
-            $table->date('hour_end');
+            $table->integer('hour_start');
+            $table->integer('hour_end');
         });
     }
 
