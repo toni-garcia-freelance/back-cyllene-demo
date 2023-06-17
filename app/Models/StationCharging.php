@@ -18,4 +18,19 @@ class StationCharging extends Model
         'number_of_charging',
         'address_id'
     ];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'station_charging_id');
+    }
+
+    public function address()
+    {
+        return $this->belongsTo(Address::class, 'address_id');
+    }
+
+    public function prices()
+    {
+        return $this->belongsToMany(Price::class, 'station_charging_has_price', 'station_charging_id', 'price_id');
+    }
 }

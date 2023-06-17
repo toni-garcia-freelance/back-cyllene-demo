@@ -18,4 +18,9 @@ class Comment extends Model
         'title',
         'station_charging_id'
     ];
+
+    public function stationCharging()
+    {
+        return $this->belongsTo(StationCharging::class, 'station_charging_id');
+    }
 }
