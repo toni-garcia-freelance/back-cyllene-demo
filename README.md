@@ -10,8 +10,11 @@ Voici une vidéo de démonstation de l'app en Back : https://user-images.githubu
 Installation de l'application :
 
 Récupérer le code à partir de git 
+
 Placer vous dans le répertoire et lancer la commande : composer install 
+
 Créer un fichier .env et modifier les paramètres de votre base de données 
+
 Ajouter la ligne NOVA_LICENSE_KEY dans le fichier .env, la valeur de la license nova vous sera envoyez par mail ou vous pouvez la demander par mail : toni.garcia.freelance@gmail.com
 
 Voici la liste des commandes à lancer pour la suite :
